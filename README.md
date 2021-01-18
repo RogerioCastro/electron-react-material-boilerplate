@@ -7,7 +7,7 @@ Electron React Material Boilerplate uses [Electron](https://www.electronjs.org/)
 First, clone the repo via git and install dependencies:
 
 ```bash
-git clone https://github.com/electron-react-boilerplate/electron-react-boilerplate.git your-project-name
+git clone https://github.com/RogerioCastro/electron-react-material-boilerplate.git your-project-name
 cd your-project-name
 npm install
 ```
@@ -52,4 +52,4 @@ Icons search: [https://material-ui.com/pt/components/material-icons/](https://ma
 - [Building a React Desktop App with Electron](https://blog.bitsrc.io/building-an-electron-app-with-electron-react-boilerplate-c7ef8d010a91)
 
 ## License
-MIT © [Electron React Material Boilerplate](https://github.com/electron-react-boilerplate)
+MIT © Electron React Material Boilerplate
