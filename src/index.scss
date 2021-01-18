@@ -1,0 +1,24 @@
+/* Fontes Roboto utilizadas pela Material-UI */
+@import "~@fontsource/roboto/300.css";
+@import "~@fontsource/roboto/400.css";
+@import "~@fontsource/roboto/500.css";
+@import "~@fontsource/roboto/700.css";
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #203A43;
+}
+
+a {
+  text-decoration: none;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  background-color: #2b494a;
+  padding: 0 5px;
+  border-radius: 5px;
+}

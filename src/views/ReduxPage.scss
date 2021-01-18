@@ -1,0 +1,15 @@
+.ReduxPage {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: #d1d1d1;
+  & > div {
+    margin-top: 20px;
+  }
+  .ReduxPage-input {
+    margin: 10px 0;
+    padding: 10px 20vw;
+  }
+}

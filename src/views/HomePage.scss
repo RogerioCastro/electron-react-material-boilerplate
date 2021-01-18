@@ -1,0 +1,29 @@
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: #ffffff;
+  .HomePage-header {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .HomePage-links {
+    background-color: rgba(0,0,0,0.3);
+    padding: 20px; // para contornar a margem negativa do grid
+    max-width: 100vw;
+    .HomePage-buttons {
+      margin-bottom: 20px;
+    }
+  }
+  .HomePage-store {
+    font-size: calc(10px + 1vmin);
+    margin: 15px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
