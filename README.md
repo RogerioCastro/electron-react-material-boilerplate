@@ -1,5 +1,7 @@
 # Electron React Material Boilerplate
 
+[![Github Tag][github-tag-image]][github-tag-url]
+
 Electron React Material Boilerplate uses [Electron](https://www.electronjs.org/), [React](https://reactjs.org/), [React Router](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom), [React Redux](https://react-redux.js.org/) and [Material UI](https://material-ui.com/pt/getting-started/installation/).
 
 ## Install
@@ -53,3 +55,6 @@ Icons search: [https://material-ui.com/pt/components/material-icons/](https://ma
 
 ## License
 MIT © Electron React Material Boilerplate
+
+[github-tag-image]: https://img.shields.io/github/v/release/RogerioCastro/electron-react-material-boilerplate?label=version
+[github-tag-url]: https://github.com/RogerioCastro/electron-react-material-boilerplate/releases/latest
