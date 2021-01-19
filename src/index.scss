@@ -10,6 +10,39 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #203A43;
+  /* * {
+    &::-webkit-scrollbar-track {
+      background: #21252B;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #666666;
+    }
+  } */
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #21252B;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
 }
 
 a {

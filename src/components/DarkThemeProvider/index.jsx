@@ -19,11 +19,11 @@ const darkTheme = createMuiTheme({
  * @returns {ThemeProvider} ThemeProvider component composition.
  */
 function DarkThemeProvider(props) {
-  const { children, className } = props
+  const { children } = props
   return (
     <ThemeProvider theme={darkTheme}>
       {/* <CssBaseline /> */}
-      <div className={className}>
+      <div {...props}>
         {children}
       </div>
     </ThemeProvider>
@@ -32,16 +32,10 @@ function DarkThemeProvider(props) {
 
 /* Property validation */
 DarkThemeProvider.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.element
   ]).isRequired
-}
-
-/* Setting default values for not required properties */
-DarkThemeProvider.defaultProps = {
-  className: null
 }
 
 export default DarkThemeProvider

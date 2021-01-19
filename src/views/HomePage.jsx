@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Grid from '@material-ui/core/Grid'
 import { ElectronHelpers } from '../core/Helpers'
+import version from '../assets/version.svg'
 import './HomePage.scss'
 
 import HomeLogo from '../components/HomeLogo'
@@ -61,6 +62,9 @@ class HomePage extends Component {
           <h2>
             {title}
           </h2>
+          <div className="HomeVersion">
+            <img src={version} alt="Version" />
+          </div>
         </header>
         <div className="HomePage-links">
           <Grid
@@ -71,16 +75,6 @@ class HomePage extends Component {
             className="HomePage-buttons"
             spacing={2}
           >
-            <Grid item>
-              <WhiteButton
-                variant="outlined"
-                color="primary"
-                component={Link}
-                to="/redux"
-              >
-                Redux example
-              </WhiteButton>
-            </Grid>
             <Grid item>
               <WhiteButton
                 variant="outlined"
@@ -97,6 +91,26 @@ class HomePage extends Component {
                 onClick={this.showElectronError}
               >
                 Electron Error
+              </WhiteButton>
+            </Grid>
+            <Grid item>
+              <WhiteButton
+                variant="outlined"
+                color="primary"
+                component={Link}
+                to="/redux"
+              >
+                Redux
+              </WhiteButton>
+            </Grid>
+            <Grid item>
+              <WhiteButton
+                variant="outlined"
+                color="primary"
+                component={Link}
+                to="/material"
+              >
+                Material UI
               </WhiteButton>
             </Grid>
           </Grid>

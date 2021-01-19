@@ -17,12 +17,14 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core'
-import { Menu as MenuIcon, Home as HomeIcon, Storage as StorageIcon } from '@material-ui/icons'
+import { Menu as MenuIcon, Home as HomeIcon } from '@material-ui/icons'
 import store from './redux/store'
 
+import { MaterialIcon, ReduxIcon } from './components/SvgIcon'
 import RouteLink from './components/RouteLink'
 import HomePage from './views/HomePage'
 import ReduxPage from './views/ReduxPage'
+import MaterialPage from './views/MaterialPage'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -68,7 +70,8 @@ function App() {
         {
           [
             { label: 'Home', path: '/', icon: <HomeIcon /> },
-            { label: 'Redux example', path: '/redux', icon: <StorageIcon /> }
+            { label: 'Redux', path: '/redux', icon: <ReduxIcon /> },
+            { label: 'Material UI', path: '/material', icon: <MaterialIcon /> }
           ].map((menuItem) => (
             <RouteLink key={menuItem.label} to={menuItem.path} path={currentPath}>
               <ListItem
@@ -91,6 +94,7 @@ function App() {
         <Switch>
           <Route exact path="/" render={(props) => <HomePage {...props} onMount={handleOnRouteMount} />} />
           <Route path="/redux" render={(props) => <ReduxPage {...props} onMount={handleOnRouteMount} />} />
+          <Route path="/material" render={(props) => <MaterialPage {...props} onMount={handleOnRouteMount} />} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
         <Drawer anchor="left" open={menu} onClose={toggleMenu(false)}>
