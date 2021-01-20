@@ -89,7 +89,7 @@ function ScrollToTop(props) {
 ScrollToTop.propTypes = {
   container: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+    PropTypes.shape({})
   ]),
   showIn: PropTypes.number
 }
