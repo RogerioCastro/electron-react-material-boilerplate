@@ -386,13 +386,6 @@ MaterialPage.propTypes = {
   setCurrentRoute: PropTypes.func.isRequired
 }
 
-/* Mapping the Redux state to component properties. Ex.: this.props.teste1 */
-/* const mapStateToProps = (state) => {
-  const { teste1 } = state.teste1 // reducer teste1
-  const { teste2 } = state.teste2 // reducer teste2
-  return { teste1, teste2 }
-} */
-
 /* Mapping the Redux dispatches to component properties. Ex.: this.props.setTeste1() */
 const mapDispatchToProps = (dispatch) => ({
   setCurrentRoute: (value) => ReduxHelpers.setCurrentRoute(dispatch, value)
