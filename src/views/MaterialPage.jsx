@@ -5,6 +5,7 @@ import React, {
   forwardRef
 } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import {
@@ -28,6 +29,7 @@ import {
   Tooltip
 } from '@material-ui/core'
 import MuiAlert from '@material-ui/lab/Alert'
+import { ReduxHelpers } from '../core/Helpers'
 
 /* Reusing a theme provider, when it cannot be used in the App */
 import DarkThemeProvider from '../components/DarkThemeProvider'
@@ -142,8 +144,6 @@ const useStyles = makeStyles((theme) => ({
 
 function MaterialPage(props) {
   const classes = useStyles()
-  // Get properties
-  const { onMount } = props
   const [dialogOpen, setDialogOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
   // Used to hide the Alert
@@ -154,12 +154,10 @@ function MaterialPage(props) {
   useEffect(() => {
     // eslint-disable-next-line
     const path = props.location?.pathname
-    // Sending the current path to the parent component
-    onMount(path)
-    // Set element to scroll behavior
+    // Updating the current path in the app state
+    props.setCurrentRoute(path)
+    // Set element to scroll behavior after content loaded
     setElementToScroll(elementRef.current)
-    // eslint-disable-next-line no-console
-    // console.log('elementToScroll:', elementToScroll)
   })
 
   const handleClickDialogOpen = () => {
@@ -385,12 +383,20 @@ function MaterialPage(props) {
 
 /* Property validation */
 MaterialPage.propTypes = {
-  onMount: PropTypes.func
+  setCurrentRoute: PropTypes.func.isRequired
 }
 
-/* Setting default values for not required properties */
-MaterialPage.defaultProps = {
-  onMount: () => {}
-}
+/* Mapping the Redux state to component properties. Ex.: this.props.teste1 */
+/* const mapStateToProps = (state) => {
+  const { teste1 } = state.teste1 // reducer teste1
+  const { teste2 } = state.teste2 // reducer teste2
+  return { teste1, teste2 }
+} */
 
-export default MaterialPage
+/* Mapping the Redux dispatches to component properties. Ex.: this.props.setTeste1() */
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentRoute: (value) => ReduxHelpers.setCurrentRoute(dispatch, value)
+})
+
+/* Connecting the component to redux */
+export default connect(null, mapDispatchToProps)(MaterialPage)

@@ -1,7 +1,16 @@
-import { SET_TESTE1, SET_TESTE2 } from '../redux/actions'
+import {
+  SET_APP_CURRENT_ROUTE,
+  SET_TESTE1,
+  SET_TESTE2
+} from '../redux/actions'
 
 /* Redux tools */
 const ReduxHelpers = {
+  setCurrentRoute: (dispatch, value) => dispatch({
+    type: SET_APP_CURRENT_ROUTE,
+    payload: value
+  }),
+
   setTeste1: (dispatch, value) => dispatch({
     type: SET_TESTE1,
     payload: value

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { ElectronHelpers } from '../core/Helpers'
+import { ElectronHelpers, ReduxHelpers } from '../core/Helpers'
 import version from '../assets/version.svg'
 import './HomePage.scss'
 
@@ -41,9 +41,9 @@ class HomePage extends Component {
 
   componentDidMount() {
     // eslint-disable-next-line
-    const [onMount, path] = [this.props.onMount, this.props.location.pathname]
-    // Sending the current path to the parent component
-    onMount(path)
+    const [setCurrentRoute, path] = [this.props.setCurrentRoute, this.props.location.pathname]
+    // Updating the current path in the app state
+    setCurrentRoute(path)
   }
 
   /* Electron dialog example (information) */
@@ -108,14 +108,13 @@ class HomePage extends Component {
 HomePage.propTypes = {
   teste1: PropTypes.string,
   teste2: PropTypes.string,
-  onMount: PropTypes.func
+  setCurrentRoute: PropTypes.func.isRequired
 }
 
 /* Setting default values for not required properties */
 HomePage.defaultProps = {
   teste1: 'default value',
-  teste2: 'default value',
-  onMount: () => {}
+  teste2: 'default value'
 }
 
 /* Mapping the Redux state to component properties. Ex.: this.props.teste1 */
@@ -125,5 +124,10 @@ const mapStateToProps = (state) => {
   return { teste1, teste2 }
 }
 
+/* Mapping the Redux dispatches to component properties. Ex.: this.props.setTeste1() */
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentRoute: (value) => ReduxHelpers.setCurrentRoute(dispatch, value)
+})
+
 /* Connecting the component to redux */
-export default connect(mapStateToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

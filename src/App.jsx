@@ -43,18 +43,15 @@ const useStyles = makeStyles(() => ({
 /* Application component */
 function App() {
   const classes = useStyles()
+  const { app } = store.getState()
+  const { currentRoute } = app
   const [menu, setMenu] = useState(false)
-  const [currentPath, setCurrentPath] = useState('/')
 
   const toggleMenu = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
     }
     setMenu(open)
-  }
-
-  const handleOnRouteMount = (path) => {
-    setCurrentPath(path)
   }
 
   // Menu list
@@ -73,9 +70,9 @@ function App() {
             { label: 'Redux', path: '/redux', icon: <ReduxIcon /> },
             { label: 'Material UI', path: '/material', icon: <MaterialIcon /> }
           ].map((menuItem) => (
-            <RouteLink key={menuItem.label} to={menuItem.path} path={currentPath}>
+            <RouteLink key={menuItem.label} to={menuItem.path} path={currentRoute}>
               <ListItem
-                selected={currentPath === menuItem.path}
+                selected={currentRoute === menuItem.path}
                 button
               >
                 <ListItemIcon>{menuItem.icon}</ListItemIcon>
@@ -92,9 +89,9 @@ function App() {
     <Provider store={store}>
       <HashRouter>
         <Switch>
-          <Route exact path="/" render={(props) => <HomePage {...props} onMount={handleOnRouteMount} />} />
-          <Route path="/redux" render={(props) => <ReduxPage {...props} onMount={handleOnRouteMount} />} />
-          <Route path="/material" render={(props) => <MaterialPage {...props} onMount={handleOnRouteMount} />} />
+          <Route exact path="/" component={HomePage} />
+          <Route path="/redux" component={ReduxPage} />
+          <Route path="/material" component={MaterialPage} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
         <Drawer anchor="left" open={menu} onClose={toggleMenu(false)}>
