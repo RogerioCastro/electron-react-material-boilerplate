@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Grid from '@material-ui/core/Grid'
 import { ElectronHelpers } from '../core/Helpers'
 import version from '../assets/version.svg'
 import './HomePage.scss'
 
 import HomeLogo from '../components/HomeLogo'
 import ReactLink from '../components/ReactLink'
-import WhiteButton from '../components/WhiteButton'
+import HomeButtons from '../components/HomeButtons'
 
 /**
  * Home page component (route).
@@ -20,6 +18,29 @@ class HomePage extends Component {
     this.state = {
       title: 'React Electron Material Boilerplate'
     }
+    // Buttons (actions and routes)
+    this.homeButtons = [
+      {
+        label: 'Electron Dialog',
+        to: null,
+        action: this.showElectronMessage
+      },
+      {
+        label: 'Electron Error',
+        to: null,
+        action: this.showElectronError
+      },
+      {
+        label: 'Redux',
+        to: '/redux',
+        action: null
+      },
+      {
+        label: 'Material UI',
+        to: '/material',
+        action: null
+      }
+    ]
   }
 
   componentDidMount() {
@@ -67,53 +88,7 @@ class HomePage extends Component {
           </div>
         </header>
         <div className="HomePage-links">
-          <Grid
-            container
-            direction="row"
-            justify="space-around"
-            alignItems="center"
-            className="HomePage-buttons"
-            spacing={2}
-          >
-            <Grid item>
-              <WhiteButton
-                variant="outlined"
-                color="primary"
-                onClick={this.showElectronMessage}
-              >
-                Electron Dialog
-              </WhiteButton>
-            </Grid>
-            <Grid item>
-              <WhiteButton
-                variant="outlined"
-                color="primary"
-                onClick={this.showElectronError}
-              >
-                Electron Error
-              </WhiteButton>
-            </Grid>
-            <Grid item>
-              <WhiteButton
-                variant="outlined"
-                color="primary"
-                component={Link}
-                to="/redux"
-              >
-                Redux
-              </WhiteButton>
-            </Grid>
-            <Grid item>
-              <WhiteButton
-                variant="outlined"
-                color="primary"
-                component={Link}
-                to="/material"
-              >
-                Material UI
-              </WhiteButton>
-            </Grid>
-          </Grid>
+          <HomeButtons buttons={this.homeButtons} gridClassName="HomePage-buttons" />
           <ReactLink />
         </div>
         <div className="HomePage-store">
