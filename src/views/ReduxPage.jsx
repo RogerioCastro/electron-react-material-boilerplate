@@ -2,12 +2,11 @@ import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { TextField, Divider } from '@material-ui/core'
+import { TextField, Divider, Button } from '@material-ui/core'
 import { ArrowBack as ArrowBackIcon, Edit as EditIcon } from '@material-ui/icons'
 import { ReduxHelpers } from '../core/Helpers'
 import './ReduxPage.scss'
 
-import WhiteButton from '../components/WhiteButton'
 /* Reusing a theme provider, when it cannot be used in the App */
 import DarkThemeProvider from '../components/DarkThemeProvider'
 
@@ -78,15 +77,14 @@ function ReduxPage(props) {
       </div>
       <Divider />
       <p>
-        <WhiteButton
+        <Button
           variant="outlined"
-          color="primary"
           component={Link}
           to="/"
           startIcon={<ArrowBackIcon />}
         >
           Back to the home page
-        </WhiteButton>
+        </Button>
       </p>
     </DarkThemeProvider>
   )
