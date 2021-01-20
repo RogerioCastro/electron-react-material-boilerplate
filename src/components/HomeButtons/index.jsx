@@ -17,20 +17,14 @@ function HomeButtons(props) {
       spacing={2}
     >
       {buttons.map((button) => {
-        const buttonProps = button.to
-          ? {
-            component: Link,
-            to: button.to
-          }
-          : {
-            onClick: button.action
-          }
+        const buttonProps = button.to ? { component: Link } : {}
         return (
           <Grid key={button.label} item>
             <WhiteButton
               variant="outlined"
               color="primary"
               {...buttonProps}
+              {...button}
             >
               {button.label}
             </WhiteButton>

@@ -22,23 +22,19 @@ class HomePage extends Component {
     this.homeButtons = [
       {
         label: 'Electron Dialog',
-        to: null,
-        action: this.showElectronMessage
+        onClick: this.showElectronMessage
       },
       {
         label: 'Electron Error',
-        to: null,
-        action: this.showElectronError
+        onClick: this.showElectronError
       },
       {
         label: 'Redux',
-        to: '/redux',
-        action: null
+        to: '/redux'
       },
       {
         label: 'Material UI',
-        to: '/material',
-        action: null
+        to: '/material'
       }
     ]
   }
