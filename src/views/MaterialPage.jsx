@@ -4,8 +4,6 @@ import React, {
   createRef,
   forwardRef
 } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import {
@@ -29,7 +27,6 @@ import {
   Tooltip
 } from '@material-ui/core'
 import MuiAlert from '@material-ui/lab/Alert'
-import { ReduxHelpers } from '../core/Helpers'
 
 /* Reusing a theme provider, when it cannot be used in the App */
 import DarkThemeProvider from '../components/DarkThemeProvider'
@@ -142,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function MaterialPage(props) {
+function MaterialPage() {
   const classes = useStyles()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
@@ -152,10 +149,6 @@ function MaterialPage(props) {
   const elementRef = createRef()
 
   useEffect(() => {
-    // eslint-disable-next-line
-    const path = props.location?.pathname
-    // Updating the current path in the app state
-    props.setCurrentRoute(path)
     // Set element to scroll behavior after content loaded
     setElementToScroll(elementRef.current)
   })
@@ -381,15 +374,4 @@ function MaterialPage(props) {
   )
 }
 
-/* Property validation */
-MaterialPage.propTypes = {
-  setCurrentRoute: PropTypes.func.isRequired
-}
-
-/* Mapping the Redux dispatches to component properties. Ex.: this.props.setTeste1() */
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentRoute: (value) => ReduxHelpers.setCurrentRoute(dispatch, value)
-})
-
-/* Connecting the component to redux */
-export default connect(null, mapDispatchToProps)(MaterialPage)
+export default MaterialPage

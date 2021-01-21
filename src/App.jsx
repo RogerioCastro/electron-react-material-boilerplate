@@ -22,6 +22,7 @@ import store from './redux/store'
 
 import { MaterialIcon, ReduxIcon } from './components/SvgIcon'
 import RouteLink from './components/RouteLink'
+import LocationListener from './components/LocationListener'
 import HomePage from './views/HomePage'
 import ReduxPage from './views/ReduxPage'
 import MaterialPage from './views/MaterialPage'
@@ -89,10 +90,12 @@ function App() {
     <Provider store={store}>
       <HashRouter>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/redux" component={ReduxPage} />
-          <Route path="/material" component={MaterialPage} />
-          <Route render={() => <Redirect to="/" />} />
+          <LocationListener>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/redux" component={ReduxPage} />
+            <Route path="/material" component={MaterialPage} />
+            <Route render={() => <Redirect to="/" />} />
+          </LocationListener>
         </Switch>
         <Drawer anchor="left" open={menu} onClose={toggleMenu(false)}>
           {menuList}

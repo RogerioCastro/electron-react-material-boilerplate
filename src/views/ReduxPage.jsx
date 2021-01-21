@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -16,13 +16,6 @@ import DarkThemeProvider from '../components/DarkThemeProvider'
 function ReduxPage(props) {
   // Get properties
   const { teste1, teste2 } = props
-
-  useEffect(() => {
-    // eslint-disable-next-line
-    const path = props.location?.pathname
-    // Updating the current path in the app state
-    props.setCurrentRoute(path)
-  })
 
   // Handling state change
   function handleChangeTeste1(e) {
@@ -94,7 +87,6 @@ function ReduxPage(props) {
 ReduxPage.propTypes = {
   teste1: PropTypes.string,
   teste2: PropTypes.string,
-  setCurrentRoute: PropTypes.func.isRequired,
   setTeste1: PropTypes.func.isRequired,
   setTeste2: PropTypes.func.isRequired
 }
@@ -114,7 +106,6 @@ const mapStateToProps = (state) => {
 
 /* Mapping the Redux dispatches to component properties. Ex.: this.props.setTeste1() */
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentRoute: (value) => ReduxHelpers.setCurrentRoute(dispatch, value),
   setTeste1: (value) => ReduxHelpers.setTeste1(dispatch, value),
   setTeste2: (value) => ReduxHelpers.setTeste2(dispatch, value)
 })
