@@ -47,6 +47,18 @@ function App() {
   const { app } = store.getState()
   const { currentRoute } = app
   const [menu, setMenu] = useState(false)
+  /* Pages */
+  const routes = [
+    {
+      label: 'Home', path: '/', icon: <HomeIcon />, component: HomePage
+    },
+    {
+      label: 'Redux', path: '/redux', icon: <ReduxIcon />, component: ReduxPage
+    },
+    {
+      label: 'Material UI', path: '/material', icon: <MaterialIcon />, component: MaterialPage
+    }
+  ]
 
   const toggleMenu = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -65,23 +77,17 @@ function App() {
     >
       <List>
         <ListSubheader>Pages</ListSubheader>
-        {
-          [
-            { label: 'Home', path: '/', icon: <HomeIcon /> },
-            { label: 'Redux', path: '/redux', icon: <ReduxIcon /> },
-            { label: 'Material UI', path: '/material', icon: <MaterialIcon /> }
-          ].map((menuItem) => (
-            <RouteLink key={menuItem.label} to={menuItem.path} path={currentRoute}>
-              <ListItem
-                selected={currentRoute === menuItem.path}
-                button
-              >
-                <ListItemIcon>{menuItem.icon}</ListItemIcon>
-                <ListItemText primary={menuItem.label} />
-              </ListItem>
-            </RouteLink>
-          ))
-        }
+        {routes.map((route) => (
+          <RouteLink key={route.label} to={route.path} path={currentRoute}>
+            <ListItem
+              selected={currentRoute === route.path}
+              button
+            >
+              <ListItemIcon>{route.icon}</ListItemIcon>
+              <ListItemText primary={route.label} />
+            </ListItem>
+          </RouteLink>
+        ))}
       </List>
     </div>
   )
@@ -91,9 +97,14 @@ function App() {
       <HashRouter>
         <Switch>
           <LocationListener>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/redux" component={ReduxPage} />
-            <Route path="/material" component={MaterialPage} />
+            {routes.map((route) => (
+              <Route
+                key={route.label}
+                exact={route.path === '/'}
+                path={route.path}
+                component={route.component}
+              />
+            ))}
             <Route render={() => <Redirect to="/" />} />
           </LocationListener>
         </Switch>
