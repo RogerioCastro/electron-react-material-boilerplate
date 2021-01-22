@@ -9,6 +9,7 @@ import './ReduxPage.scss'
 
 /* Reusing a theme provider, when it cannot be used in the App */
 import DarkThemeProvider from '../components/DarkThemeProvider'
+import { useCurrentRoute } from '../core/Hooks'
 
 /**
  * Redux example page component (route).
@@ -16,6 +17,8 @@ import DarkThemeProvider from '../components/DarkThemeProvider'
 function ReduxPage(props) {
   // Get properties
   const { teste1, teste2 } = props
+
+  useCurrentRoute(props)
 
   // Handling state change
   function handleChangeTeste1(e) {

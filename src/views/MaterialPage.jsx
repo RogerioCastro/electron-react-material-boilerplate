@@ -31,6 +31,7 @@ import MuiAlert from '@material-ui/lab/Alert'
 /* Reusing a theme provider, when it cannot be used in the App */
 import DarkThemeProvider from '../components/DarkThemeProvider'
 import ScrollToTop from '../components/ScrollToTop'
+import { useCurrentRoute } from '../core/Hooks'
 
 const topHeight = 50
 
@@ -139,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function MaterialPage() {
+function MaterialPage(props) {
   const classes = useStyles()
   const [dialogOpen, setDialogOpen] = useState(false)
   const [snackbarOpen, setSnackbarOpen] = useState(false)
@@ -147,6 +148,8 @@ function MaterialPage() {
   const [collapseOpen, setCollapseOpen] = useState(true)
   const [elementToScroll, setElementToScroll] = useState(null)
   const elementRef = createRef()
+
+  useCurrentRoute(props)
 
   useEffect(() => {
     // Set element to scroll behavior after content loaded
